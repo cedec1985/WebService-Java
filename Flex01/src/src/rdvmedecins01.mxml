@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" creationComplete="init();">
+	<mx:Script>
+		<![CDATA[
+			import generated.webservices.Client;
+			import generated.webservices.GetAllClients;
+			import mx.rpc.events.FaultEvent;
+			import mx.collections.ArrayCollection;
+			import generated.webservices.WsDaoJpaService;
+			import generated.webservices.GetAllClientsResultEvent;
+			import generated.webservices.GetAllClients;
+			
+			// données
+			private var ws:WsDaoJpaService;
+			[Bindable]
+			private var clients:ArrayCollection;
+			
+			private function init():void{
+				// on instancie le proxy du service web
+				ws=new WsDaoJpaService();
+				// on configure les gestionnaires d'évts
+				ws.addgetAllClientsEventListener(loadClientsCompleted);
+				ws.addEventListener(FaultEvent.FAULT,loadClientsFault);
+			}
+			
+			private function loadClients():void{
+				// on demande la liste des clients
+				ws.getAllClients(new GetAllClients());
+			}
+			
+			private function loadClientsCompleted(event:GetAllClientsResultEvent):void{
+				// on récupère les clients dans le résultat envoyé
+				clients=event.result as ArrayCollection;
+			}
+			
+			private function loadClientsFault(event:FaultEvent):void{
+				// on affiche le msg d'erreur
+				txtMsgErreur.text=event.fault.message;
+			}
+			
+			private function displayClient(client:Client):String{
+				// on affiche un client
+				return client.nom + " " + client.prenom;
+			} 
+		]]>
+	</mx:Script>
+	<mx:Label text="Liste des clients" fontSize="14"/>
+	<mx:List dataProvider="{clients}" labelFunction="displayClient"></mx:List>
+	<mx:Button label="Afficher les clients" click="loadClients()"/>
+	<mx:Text id="txtMsgErreur" width="454" height="75"/>
+	
+</mx:Application>

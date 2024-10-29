@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical">
+	<mx:Script>
+		<![CDATA[
+			import mx.rpc.events.ResultEvent;
+			import mx.rpc.events.FaultEvent;
+			import mx.collections.ArrayCollection;
+			
+			// données
+			[Bindable]
+			private var medecins:ArrayCollection;
+			
+			private function loadMedecins():void{
+				// on demande la liste des médecins
+				wsrdvmedecins.getAllMedecins.send();
+			}
+			
+			private function loadMedecinsCompleted(event:ResultEvent):void{
+				// on récupère les médecins
+				medecins=event.result as ArrayCollection;
+			}
+			
+			private function loadMedecinsFault(event:FaultEvent):void{
+				// on affiche le msg d'erreur
+				txtMsgErreur.text=event.fault.message;
+			} 
+			
+			// affichage d'un médecin
+			private function displayMedecin(medecin:Object):String{
+				return medecin.nom + " " + medecin.prenom;
+			} 
+
+		]]>
+	</mx:Script>
+	<mx:WebService id="wsrdvmedecins" 
+		wsdl="http://localhost:8080/serveur-webservice-ejb-dao-jpa-hibernate/WsDaoJpaService?wsdl">
+		<mx:operation name="getAllMedecins" 
+			result="loadMedecinsCompleted(event)" fault="loadMedecinsFault(event);">
+			<mx:request/>
+		</mx:operation>
+	</mx:WebService>
+	<mx:Label text="Liste des médecins" fontSize="14"/>
+	<mx:List dataProvider="{medecins}" labelFunction="displayMedecin"></mx:List>
+	<mx:Button label="Afficher les médecins" click="loadMedecins()"/>
+	<mx:Text id="txtMsgErreur" width="300" height="113"/>
+	
+</mx:Application>
