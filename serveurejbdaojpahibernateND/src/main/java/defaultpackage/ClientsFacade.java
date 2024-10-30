@@ -11,12 +11,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import entites.Clients;
 
-
-
-/**
- *
- * @author st
- */
 @Stateless
 public class ClientsFacade implements ClientsFacadeLocal, ClientsFacadeRemote {
   @PersistenceContext
