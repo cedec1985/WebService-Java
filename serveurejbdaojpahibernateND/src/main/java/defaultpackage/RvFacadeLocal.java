@@ -9,10 +9,6 @@ import java.util.List;
 import javax.ejb.Local;
 import entites.Rv;
 
-/**
- *
- * @author st
- */
 @Local
 public interface RvFacadeLocal {
 
