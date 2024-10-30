@@ -11,10 +11,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import entites.Medecins;
 
-/**
- *
- * @author st
- */
 @Stateless
 public class MedecinsFacade implements MedecinsFacadeLocal, MedecinsFacadeRemote {
   @PersistenceContext
