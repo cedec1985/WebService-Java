@@ -1,7 +1,5 @@
 <%-- 
     Document   : index
-    Created on : 27 janv. 2009, 12:07:46
-    Author     : st
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
