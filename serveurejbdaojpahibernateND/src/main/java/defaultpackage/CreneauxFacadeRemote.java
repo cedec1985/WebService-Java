@@ -9,10 +9,6 @@ import java.util.List;
 import javax.ejb.Remote;
 import entites.Creneaux;
 
-/**
- *
- * @author st
- */
 @Remote
 public interface CreneauxFacadeRemote {
 
