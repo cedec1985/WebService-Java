@@ -9,10 +9,6 @@ import java.util.List;
 import javax.ejb.Local;
 import entites.Medecins;
 
-/**
- *
- * @author st
- */
 @Local
 public interface MedecinsFacadeLocal {
 
