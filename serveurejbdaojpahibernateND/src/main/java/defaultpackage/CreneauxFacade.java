@@ -11,10 +11,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import entites.Creneaux;
 
-/**
- *
- * @author st
- */
 @Stateless
 public  class CreneauxFacade implements CreneauxFacadeLocal, CreneauxFacadeRemote {
   @PersistenceContext
