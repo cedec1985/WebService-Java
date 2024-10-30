@@ -11,10 +11,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import entites.Rv;
 
-/**
- *
- * @author st
- */
 @Stateless
 public class RvFacade implements RvFacadeLocal, RvFacadeRemote {
   @PersistenceContext
