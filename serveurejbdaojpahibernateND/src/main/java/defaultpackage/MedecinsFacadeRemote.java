@@ -9,10 +9,7 @@ import java.util.List;
 import javax.ejb.Remote;
 import entites.Medecins;
 
-/**
- *
- * @author st
- */
+
 @Remote
 public interface MedecinsFacadeRemote {
 
