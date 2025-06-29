@@ -1,5 +1,4 @@
-# WebService-Java
-Utilisation de Module EJB, JPA et Hibernate pour construire le projet
+# RDV médecins
+Application de gestion des RDV médecins à destination des clients
 
-IDE Netbeans, Mysql server db, Java EE, Tomcat EE server
 
